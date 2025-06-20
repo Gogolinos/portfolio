@@ -10,6 +10,44 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
+    body {
+  transition: background 0.3s, color 0.3s;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#darkModeToggle {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.3s;
+}
+
+#darkModeToggle:hover {
+  transform: scale(1.2);
+}
+
+/* Dark mode classes */
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark nav {
+  background-color: #1e1e1e;
+}
+
+body.dark .card {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
     :root {
       --main-color: #00bcd4;
       --dark-color: #0097a7;
@@ -118,6 +156,7 @@
         align-items: center;
       }
     }
+
   </style>
 </head>
 
@@ -125,9 +164,13 @@
 
   <!-- Navbar -->
   <nav>
+  <div style="display: flex; gap: 2rem; align-items: center;">
     <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
-  </nav>
+  </div>
+  <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
+</nav>
+
 
   <!-- Content -->
   <div class="container">
@@ -150,6 +193,15 @@
   <footer>
     © 2025 Γιώργος Αγκαζαριάν. All rights reserved.
   </footer>
+<script>
+  const toggleBtn = document.getElementById("darkModeToggle");
+  const body = document.body;
+
+  toggleBtn.addEventListener("click", () => {
+    body.classList.toggle("dark");
+    toggleBtn.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
+  });
+</script>
 
 </body>
 </html>

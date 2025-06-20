@@ -113,6 +113,45 @@
         font-size: 1rem;
       }
     }
+
+  body {
+  transition: background 0.3s, color 0.3s;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#darkModeToggle {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.3s;
+}
+
+#darkModeToggle:hover {
+  transform: scale(1.2);
+}
+
+/* Dark mode classes */
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark nav {
+  background-color: #1e1e1e;
+}
+
+body.dark .card {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
   </style>
 
   <!-- FontAwesome icons (socials) -->
@@ -123,10 +162,13 @@
 
   <!-- Navbar -->
   <nav>
+  <div style="display: flex; gap: 2rem; align-items: center;">
     <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  </div>
+  <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
+</nav>
+
 
   <!-- Hero Section -->
   <section class="hero">
