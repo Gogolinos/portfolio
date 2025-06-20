@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Γιώργος Αγκαζαριάν - Portfolio</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Google Fonts + FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
     :root {
@@ -24,6 +25,7 @@
       font-family: 'Poppins', sans-serif;
       background: #ffffff;
       color: #333;
+      transition: background 0.3s, color 0.3s;
     }
 
     nav {
@@ -33,19 +35,33 @@
       top: 0;
       z-index: 1000;
       display: flex;
-      justify-content: center;
-      gap: 2rem;
+      justify-content: space-between;
+      align-items: center;
     }
 
     nav a {
       color: white;
+      margin-right: 1.5rem;
       text-decoration: none;
       font-weight: 600;
-      transition: 0.3s;
+      transition: color 0.3s;
     }
 
     nav a:hover {
       color: #e0f7fa;
+    }
+
+    #darkModeToggle {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: white;
+      transition: transform 0.3s;
+    }
+
+    #darkModeToggle:hover {
+      transform: scale(1.2);
     }
 
     .hero {
@@ -91,7 +107,7 @@
     .socials a {
       color: var(--main-color);
       font-size: 1.5rem;
-      transition: 0.3s;
+      transition: color 0.3s;
     }
 
     .socials a:hover {
@@ -105,6 +121,15 @@
       color: #777;
     }
 
+    body.dark {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    body.dark nav {
+      background-color: #1e1e1e;
+    }
+
     @media (max-width: 600px) {
       .hero h1 {
         font-size: 2.2rem;
@@ -112,65 +137,23 @@
       .hero p {
         font-size: 1rem;
       }
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
     }
-
-  body {
-  transition: background 0.3s, color 0.3s;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#darkModeToggle {
-  background: none;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-  color: white;
-  transition: transform 0.3s;
-}
-
-#darkModeToggle:hover {
-  transform: scale(1.2);
-}
-
-/* Dark mode classes */
-body.dark {
-  background-color: #121212;
-  color: #e0e0e0;
-}
-
-body.dark nav {
-  background-color: #1e1e1e;
-}
-
-body.dark .card {
-  background-color: #1e1e1e;
-  color: #e0e0e0;
-}
-
   </style>
-
-  <!-- FontAwesome icons (socials) -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
-  <!-- Navbar -->
   <nav>
-  <div style="display: flex; gap: 2rem; align-items: center;">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-  </div>
-  <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
-</nav>
+    <div style="display: flex; gap: 2rem; align-items: center;">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+    </div>
+    <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
+  </nav>
 
-
-  <!-- Hero Section -->
   <section class="hero">
     <h1>Γιώργος Αγκαζαριάν</h1>
     <p>Φοιτητής Πληροφορικής & Web Developer με πάθος για δημιουργία</p>
@@ -187,5 +170,14 @@ body.dark .card {
     © 2025 Γιώργος Αγκαζαριάν. All rights reserved.
   </footer>
 
+  <script>
+    const toggleBtn = document.getElementById("darkModeToggle");
+    const body = document.body;
+
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      toggleBtn.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
+    });
+  </script>
 </body>
 </html>
