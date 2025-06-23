@@ -1,13 +1,15 @@
+<!-- ✅ projects.html (English, dark mode, scroll animations, updated design) -->
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projects - Γιώργος Αγκαζαριάν</title>
+  <title>Projects - Giorgos Agkazarian</title>
 
   <!-- Google Fonts + FontAwesome -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
     :root {
@@ -155,46 +157,50 @@
     <div style="display: flex; gap: 2rem; align-items: center;">
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="blog.html">Blog</a>
     </div>
     <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
   </nav>
 
   <div class="container">
-    <h1>Τα Projects μου</h1>
+    <h1 data-aos="fade-up">My Projects</h1>
     <div class="grid">
-      <div class="card">
-        <h3>Todo App με JavaScript</h3>
-        <p>Μια απλή εφαρμογή διαχείρισης εργασιών με προσθήκη/διαγραφή todo items.</p>
-        <a href="#">Δες στο GitHub</a>
+      <div class="card" data-aos="fade-up">
+        <h3>Todo App (JavaScript)</h3>
+        <p>A simple todo list application built with plain JavaScript for adding and removing tasks.</p>
+        <a href="#">View on GitHub</a>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up">
         <h3>Password Generator (Python)</h3>
-        <p>Εργαλείο δημιουργίας ασφαλών κωδικών μέσω Python CLI.</p>
-        <a href="#">Δες στο GitHub</a>
+        <p>A Python CLI tool that generates secure passwords with customizable options.</p>
+        <a href="#">View on GitHub</a>
       </div>
+      <!-- Add more cards here -->
     </div>
   </div>
 
   <footer>
-    © 2025 Γιώργος Αγκαζαριάν. All rights reserved.
+    © 2025 Giorgos Agkazarian. All rights reserved.
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    AOS.init({ duration: 800, once: true });
+
     const toggleBtn = document.getElementById("darkModeToggle");
     const body = document.body;
+    const savedTheme = sessionStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      body.classList.add("dark");
+      toggleBtn.textContent = "☀️";
+    }
 
-     //load save themed if exists
-  const savedTheme = sessionStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    body.classList.add("dark");
-    toggleBtn.textContent = "☀️";
-  }
-
-  //save dark or light mode 
-  toggleBtn.addEventListener("click", () => {
-    const isDark = body.classList.toggle("dark");
-    sessionStorage.setItem("theme", isDark ? "dark" : "light");
-    toggleBtn.textContent = isDark ? "☀️" : "🌙";
+    toggleBtn.addEventListener("click", () => {
+      const isDark = body.classList.toggle("dark");
+      sessionStorage.setItem("theme", isDark ? "dark" : "light");
+      toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
   </script>
 </body>
