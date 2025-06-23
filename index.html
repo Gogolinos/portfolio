@@ -1,13 +1,17 @@
+<!-- ✅ index.html  -->
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Γιώργος Αγκαζαριάν - Portfolio</title>
+  <title>Giorgos Agkazarian - Portfolio</title>
 
-  <!-- Google Fonts + FontAwesome -->
+  <!-- Google Fonts  -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- AOS \\ CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
     :root {
@@ -64,9 +68,14 @@
       transform: scale(1.2);
     }
 
+    section {
+      padding: 4rem 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
     .hero {
       text-align: center;
-      padding: 5rem 1rem;
       background: linear-gradient(135deg, #e0f7fa, #ffffff);
     }
 
@@ -131,15 +140,15 @@
     }
 
     @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
       .hero h1 {
         font-size: 2.2rem;
       }
       .hero p {
         font-size: 1rem;
-      }
-      nav {
-        flex-direction: column;
-        align-items: center;
       }
     }
   </style>
@@ -150,15 +159,16 @@
     <div style="display: flex; gap: 2rem; align-items: center;">
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="gallery.html">Gallery</a>
     </div>
     <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
   </nav>
 
-  <section class="hero">
-    <h1>Γιώργος Αγκαζαριάν</h1>
-    <p>Φοιτητής Πληροφορικής & Web Developer με πάθος για δημιουργία</p>
-    <a href="projects.html"><button class="btn">Δες τα Projects</button></a>
-
+  <section class="hero" data-aos="fade-up">
+    <h1>Giorgos Agkazarian</h1>
+    <p>Computer Science Student & Web Developer</p>
+    <a href="projects.html"><button class="btn">View My Projects</button></a>
     <div class="socials">
       <a href="https://github.com/gogolinos" target="_blank"><i class="fab fa-github"></i></a>
       <a href="https://www.linkedin.com/in/giorgos-agkazarian-bb63a7316/" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -166,26 +176,40 @@
     </div>
   </section>
 
+  <section data-aos="fade-up">
+    <h2>About Me</h2>
+    <p>I am an enthusiastic Computer Science student with a passion for front-end development and problem solving. I enjoy turning ideas into interactive and elegant websites.</p>
+  </section>
+
+  <section data-aos="fade-up">
+    <h2>Currently Working On</h2>
+    <p><!-- Add your current work, projects or goals here --></p>
+  </section>
+
   <footer>
-    © 2025 Γιώργος Αγκαζαριάν. All rights reserved.
+    © 2025 Giorgos Agkazarian. All rights reserved.
   </footer>
 
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+
     const toggleBtn = document.getElementById("darkModeToggle");
     const body = document.body;
+    const savedTheme = sessionStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      body.classList.add("dark");
+      toggleBtn.textContent = "☀️";
+    }
 
-     //load save themed if exists
-  const savedTheme = sessionStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    body.classList.add("dark");
-    toggleBtn.textContent = "☀️";
-  }
-
-  //save dark or light mode 
-  toggleBtn.addEventListener("click", () => {
-    const isDark = body.classList.toggle("dark");
-    sessionStorage.setItem("theme", isDark ? "dark" : "light");
-    toggleBtn.textContent = isDark ? "☀️" : "🌙";
+    toggleBtn.addEventListener("click", () => {
+      const isDark = body.classList.toggle("dark");
+      sessionStorage.setItem("theme", isDark ? "dark" : "light");
+      toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
   </script>
 </body>
